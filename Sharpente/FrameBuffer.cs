@@ -1,15 +1,17 @@
-﻿using System;
+﻿using Sharpente.Shapes;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using Sharpente.Graphics;
 
-namespace Snake
+namespace Sharpente
 {
     class FrameBuffer
     {
         public int Width { get; private set; }
         public int Height { get; private set; }
         public int Area { get => Width * Height; }
-        public readonly Position Center;
+        public readonly Point Center;
 
         private readonly Pixel[] _buffer;
 
@@ -18,7 +20,7 @@ namespace Snake
             Width = width;
             Height = height;
 
-            Center = new Position
+            Center = new Point
             {
                 X = width / 2,
                 Y = height / 2,
@@ -33,15 +35,15 @@ namespace Snake
             _buffer = new Pixel[Area];
         }
 
-        public void SetPixel(Position position, Pixel pixel)
+        public void SetPixel(Point position)
         {
-             _buffer[position.Y * Width + position.X] = pixel;
+             _buffer[position.Y * Width + position.X] = position.Pixel;
         }
 
         public void Clear()
         {
             for (int i = 0; i < Area; i++)
-                _buffer[i] = Graphics.Background;
+                _buffer[i] = Graphics.Graphics.Background;
         }
 
         public void Render()

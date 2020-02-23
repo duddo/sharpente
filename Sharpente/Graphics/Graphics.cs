@@ -2,28 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Snake
+namespace Sharpente.Graphics
 {
-    struct Position
-    {
-        public int X;
-        public int Y;
-    }
-
-    enum Directions
-    {
-        Up,
-        Down,
-        Left,
-        Right,
-    }
-
-    struct Pixel
-    {
-        public char Symbol;
-        public ConsoleColor Color;
-    }
-
     class Graphics
     {
         public static Pixel Background = new Pixel

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Snake
+namespace Sharpente
 {
     class Program
     {
@@ -9,7 +9,6 @@ namespace Snake
             int width = 60;
             int height = 30;
 
-            
             FrameBuffer frameBuffer = new FrameBuffer(width, height);
 
             Game game = new Game(frameBuffer);

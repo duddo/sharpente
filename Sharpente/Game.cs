@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using Sharpente.Graphics;
 
-namespace Snake
+namespace Sharpente
 {
     class Game
     {
@@ -19,13 +20,10 @@ namespace Snake
             _snake = new Snake(frameBuffer.Center);
         }
 
-
         public void Run()
         {
             while(true)
             {
-                _frameBuffer.Clear();
-
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo ki = Console.ReadKey(intercept: true);
@@ -47,12 +45,20 @@ namespace Snake
                 }
 
                 _snake.Update();
-                _snake.Draw(_frameBuffer);
+
+                Draw();
 
                 _frameBuffer.Render();
 
                 Thread.Sleep(50);
             }
+        }
+
+        private void Draw()
+        {
+            _frameBuffer.Clear();
+
+            _snake.Draw(_frameBuffer);
         }
     }
 }
