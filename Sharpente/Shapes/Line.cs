@@ -13,6 +13,9 @@ namespace Sharpente.Shapes
     {
         private List<Point> _points = new List<Point>();
 
+        public Point Start => _points.First();
+        public Point End => _points.Last();
+
         public Line(Point start, Directions direction, int length)
         {
             var tmp = start;
@@ -24,20 +27,21 @@ namespace Sharpente.Shapes
             }
         }
 
-        public Point GetStart()
-        {
-            return _points.First();
-        }
-
-        public Point GetEnd()
-        {
-            return _points.Last();
-        }
-
         public void Draw(FrameBuffer frameBuffer)
         {
             foreach (var p in _points)
                 p.Draw(frameBuffer);
+        }
+
+        public bool Touches(Point point)
+        {
+            foreach (var p in _points)
+            {
+                if (p.IsEqual(point))
+                    return true;
+            }
+
+            return false;
         }
 
         public override string ToString()

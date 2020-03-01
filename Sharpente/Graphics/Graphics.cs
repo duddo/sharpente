@@ -27,7 +27,7 @@ namespace Sharpente.Graphics
         public static Pixel Border = new Pixel
         {
             Symbol = '█',
-            Color = ConsoleColor.White
+            Color = ConsoleColor.DarkGray,
         };
     }
 

@@ -23,6 +23,13 @@ namespace Sharpente.Shapes
         {
         }
 
+        public bool IsEqual(Point other)
+        {
+            if (other.X == X && other.Y == Y)
+                return true;
+            return false;
+        }
+
         public Point GetAdjacent(Directions direction)
         {
             var res = new Point(this);

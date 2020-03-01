@@ -13,6 +13,8 @@ namespace Sharpente
         private FrameBuffer _frameBuffer;
 
         private Rectangle _field;
+        private Text _status;
+        private Text _message;
         private Snake _snake;
 
         public Game(FrameBuffer frameBuffer, int width, int height)
@@ -24,11 +26,17 @@ namespace Sharpente
 
             var upperLeft = new Point(2, 1, Graphics.Graphics.Border);
             _field = new Rectangle(upperLeft, width-2, height-4);
+
+            var p = _field.BottomLeft.GetAdjacent(Directions.Down);
+            _status = new Text(p, ConsoleColor.Yellow, "Go!");
+            _message = new Text(p.GetAdjacent(Directions.Down), ConsoleColor.Yellow, "Running");
         }
 
         public void Run()
         {
-            while(true)
+            bool keepGoing = true;
+
+            while(keepGoing)
             {
                 if (Console.KeyAvailable)
                 {
@@ -52,6 +60,13 @@ namespace Sharpente
 
                 _snake.Update();
 
+                if(_field.Touches(_snake.Head))
+                {
+                    _message.Color = ConsoleColor.Red;
+                    _message.TextString = "Game over!";
+                    keepGoing = false;
+                }
+
                 Draw();
 
                 _frameBuffer.Render();
@@ -65,6 +80,8 @@ namespace Sharpente
             _frameBuffer.Clear();
 
             _field.Draw(_frameBuffer);
+            _status.Draw(_frameBuffer);
+            _message.Draw(_frameBuffer);
 
             _snake.Draw(_frameBuffer);
         }

@@ -18,6 +18,8 @@ namespace Sharpente
             }
         }
 
+        public Point Head => _body.First();
+
         private Directions _course = Directions.Up;
         private Directions _oldCourse = Directions.Up;
         private readonly List<Point> _body = new List<Point>();
