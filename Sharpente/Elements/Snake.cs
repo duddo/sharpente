@@ -9,20 +9,9 @@ namespace Sharpente.Elements
 {
     class Snake : IDrawable, ITouchable
     {
-        public Directions Course
-        {
-            get => _course;
-            set 
-            {
-                _oldCourse = _course;
-                _course = value; 
-            }
-        }
-
+        public Directions Course { get; set; }
         public Point Head => _body.First();
-
-        private Directions _course = Directions.Up;
-        private Directions _oldCourse = Directions.Up;
+        
         private readonly List<Point> _body = new List<Point>();
 
         public Snake(int width, int height)
@@ -32,9 +21,13 @@ namespace Sharpente.Elements
 
         public void Grow()
         {
-            var last = _body.Last();
+            _body.Add(_body.Last().GetAdjacent(Course));
+        }
 
-            _body.Add(last.GetAdjacent(_course));
+        public void Update()
+        {
+            _body.Insert(0, Head.GetAdjacent(Course));
+            _body.RemoveAt(_body.Count-1);
         }
 
         public void Draw(FrameBuffer frameBuffer)
@@ -47,6 +40,9 @@ namespace Sharpente.Elements
         {
             foreach (var b in _body)
             {
+                if (b.IsEqual(Head))
+                    continue;
+
                 if (b.Touches(point))
                     return true;
             }

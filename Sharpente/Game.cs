@@ -25,10 +25,13 @@ namespace Sharpente
 
             _snake = new Snake(width, height);
 
-            var upperLeft = new Point(2, 1, Graphics.Graphics.Border);
-            _field = new Rectangle(upperLeft, width-2, height-4);
+            int wField = width - 2;
+            int hField = height - 4;
 
-            _fruit = new Fruit(upperLeft.GetAdjacent(Directions.Right).GetAdjacent(Directions.Down), width, height);
+            var upperLeft = new Point(2, 1, Graphics.Graphics.Border);
+            _field = new Rectangle(upperLeft, wField, hField);
+
+            _fruit = new Fruit(upperLeft.GetAdjacent(Directions.Right).GetAdjacent(Directions.Down), wField, hField);
 
             var p = _field.BottomLeft.GetAdjacent(Directions.Down);
             _status = new Text(p, ConsoleColor.Yellow, "Go!");
@@ -84,6 +87,8 @@ namespace Sharpente
                 _message.TextString = "Game over!";
                 return false;
             }
+
+            _snake.Update();
 
             return true;
         }

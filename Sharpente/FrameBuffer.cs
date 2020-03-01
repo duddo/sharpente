@@ -22,7 +22,7 @@ namespace Sharpente
             Console.SetWindowSize(width, height);
             Console.SetBufferSize(width, height);
 
-            Console.Title = "Snake C#";
+            Console.Title = AppDomain.CurrentDomain.FriendlyName;
             Console.CursorVisible = false;
 
             _buffer = new Pixel[Area];
