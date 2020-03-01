@@ -11,7 +11,6 @@ namespace Sharpente
         public int Width { get; private set; }
         public int Height { get; private set; }
         public int Area { get => Width * Height; }
-        public readonly Point Center;
 
         private readonly Pixel[] _buffer;
 
@@ -19,12 +18,6 @@ namespace Sharpente
         {
             Width = width;
             Height = height;
-
-            Center = new Point
-            {
-                X = width / 2,
-                Y = height / 2,
-            };
 
             Console.SetWindowSize(width, height);
             Console.SetBufferSize(width, height);

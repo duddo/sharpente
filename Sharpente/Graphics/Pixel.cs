@@ -8,5 +8,10 @@ namespace Sharpente.Graphics
     {
         public char Symbol;
         public ConsoleColor Color;
+
+        public override string ToString()
+        {
+            return Symbol.ToString();
+        }
     }
 }

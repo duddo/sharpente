@@ -20,7 +20,7 @@ namespace Sharpente.Shapes
             for (int i = 0; i < length; i++)
             {
                 _points.Add(tmp);
-                tmp.GetAdjacent(direction);
+                tmp = tmp.GetAdjacent(direction);
             }
         }
 
@@ -40,6 +40,10 @@ namespace Sharpente.Shapes
                 p.Draw(frameBuffer);
         }
 
+        public override string ToString()
+        {
+            return _points.Count.ToString();
+        }
     }
 
 }

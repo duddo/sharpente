@@ -12,7 +12,7 @@ namespace Sharpente.Shapes
         private Line Left;
         private Line Bottom;
 
-        public Rectangle(Point upperLeft, int height, int width)
+        public Rectangle(Point upperLeft, int width, int height)
         {
             Up = new Line(upperLeft, Directions.Right, width);
             Right = new Line(Up.GetEnd(), Directions.Down, height);

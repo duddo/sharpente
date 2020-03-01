@@ -23,6 +23,12 @@ namespace Sharpente.Graphics
             Symbol = '0',
             Color = ConsoleColor.Red
         };
+
+        public static Pixel Border = new Pixel
+        {
+            Symbol = '█',
+            Color = ConsoleColor.White
+        };
     }
 
 }

@@ -11,7 +11,7 @@ namespace Sharpente
 
             FrameBuffer frameBuffer = new FrameBuffer(width, height);
 
-            Game game = new Game(frameBuffer);
+            Game game = new Game(frameBuffer, width, height);
             game.Run();
         }
     }

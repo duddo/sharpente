@@ -11,13 +11,16 @@ namespace Sharpente.Shapes
         public int Y = 0;
         public Pixel Pixel = Graphics.Graphics.Background;
 
-        public Point() { }
+        public Point(int x, int y, Pixel pixel) 
+        {
+            X = x;
+            Y = y;
+            Pixel = pixel;
+        }
 
         public Point(Point other)
+            : this(other.X, other.Y, other.Pixel)
         {
-            X = other.X;
-            Y = other.Y;
-            Pixel = other.Pixel;
         }
 
         public Point GetAdjacent(Directions direction)
@@ -34,10 +37,8 @@ namespace Sharpente.Shapes
                     break;
                 case Directions.Left:
                     res.X--;
-                    res.X--;
                     break;
                 case Directions.Right:
-                    res.X++;
                     res.X++;
                     break;
             }
@@ -48,6 +49,11 @@ namespace Sharpente.Shapes
         public void Draw(FrameBuffer frameBuffer)
         {
             frameBuffer.SetPixel(this);
+        }
+
+        public override string ToString()
+        {
+            return $"[{X},{Y}]-'{Pixel}'";
         }
     }
 }

@@ -22,10 +22,9 @@ namespace Sharpente
         private Directions _oldCourse = Directions.Up;
         private readonly List<Point> _body = new List<Point>();
 
-        public Snake(Point start)
+        public Snake(int width, int height)
         {
-            start.Pixel = Graphics.Graphics.Snake;
-            _body.Add(start);
+            _body.Add(new Point(width / 2, height / 2, Graphics.Graphics.Snake));
         }
 
         public void Update()
