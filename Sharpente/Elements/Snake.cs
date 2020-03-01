@@ -1,12 +1,13 @@
 ﻿using Sharpente.Graphics;
+using Sharpente.Interfaces;
 using Sharpente.Shapes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Sharpente
+namespace Sharpente.Elements
 {
-    class Snake : IDrawable
+    class Snake : IDrawable, ITouchable
     {
         public Directions Course
         {
@@ -29,11 +30,10 @@ namespace Sharpente
             _body.Add(new Point(width / 2, height / 2, Graphics.Graphics.Snake));
         }
 
-        public void Update()
+        public void Grow()
         {
-            var last = _body.First();
+            var last = _body.Last();
 
-            _body.Clear();
             _body.Add(last.GetAdjacent(_course));
         }
 
@@ -41,6 +41,17 @@ namespace Sharpente
         {
             foreach (var b in _body)
                 frameBuffer.SetPixel(b);
+        }
+
+        public bool Touches(Point point)
+        {
+            foreach (var b in _body)
+            {
+                if (b.Touches(point))
+                    return true;
+            }
+
+            return false;
         }
     }
 }

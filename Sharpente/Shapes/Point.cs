@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using Sharpente.Graphics;
+using Sharpente.Interfaces;
 
 namespace Sharpente.Shapes
 {
-    class Point : IDrawable
+    class Point : IDrawable, ITouchable
     {
         public int X = 0;
         public int Y = 0;
@@ -61,6 +62,11 @@ namespace Sharpente.Shapes
         public override string ToString()
         {
             return $"[{X},{Y}]-'{Pixel}'";
+        }
+
+        public bool Touches(Point point)
+        {
+            return IsEqual(point);
         }
     }
 }

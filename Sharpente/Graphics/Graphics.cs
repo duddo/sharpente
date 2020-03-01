@@ -14,13 +14,13 @@ namespace Sharpente.Graphics
 
         public static Pixel Snake = new Pixel
         {
-            Symbol = '*',
+            Symbol = '@',
             Color = ConsoleColor.Green
         };
 
         public static Pixel Fruit = new Pixel
         {
-            Symbol = '0',
+            Symbol = '#',
             Color = ConsoleColor.Red
         };
 

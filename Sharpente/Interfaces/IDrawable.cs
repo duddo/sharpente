@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Sharpente
+namespace Sharpente.Interfaces
 {
     interface IDrawable
     {

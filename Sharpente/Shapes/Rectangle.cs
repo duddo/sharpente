@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using Sharpente.Graphics;
+using Sharpente.Interfaces;
 
 namespace Sharpente.Shapes
 {
-    class Rectangle : IDrawable
+    class Rectangle : IDrawable, ITouchable
     {
         private readonly Line _up;
         private readonly Line _right;

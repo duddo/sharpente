@@ -1,4 +1,5 @@
 ﻿using Sharpente.Graphics;
+using Sharpente.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;

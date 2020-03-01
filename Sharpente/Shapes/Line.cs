@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Sharpente.Graphics;
+using Sharpente.Interfaces;
 
 namespace Sharpente.Shapes
 {
@@ -9,7 +10,7 @@ namespace Sharpente.Shapes
     /// Represents a line that can only be oriented along one of <see cref="Directions"/>.
     /// A line of zero length will have one point.
     /// </summary>
-    class Line : IDrawable
+    class Line : IDrawable, ITouchable
     {
         private List<Point> _points = new List<Point>();
 
@@ -37,7 +38,7 @@ namespace Sharpente.Shapes
         {
             foreach (var p in _points)
             {
-                if (p.IsEqual(point))
+                if (p.Touches(point))
                     return true;
             }
 
